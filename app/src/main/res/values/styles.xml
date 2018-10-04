@@ -8,4 +8,34 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ListEntryImage">
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:layout_margin">4dp</item>
+    </style>
+
+    <style name="LargeOrangeText" parent="LargeText">
+        <item name="android:textColor">@color/orange</item>
+    </style>
+
+    <style name="TinyBoldText" parent="TinyText">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="LargeText">
+        <item name="android:textSize">@dimen/text_large</item>
+    </style>
+
+    <style name="MediumText">
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="TinyText">
+        <item name="android:textSize">@dimen/text_tiny</item>
+    </style>
+
+    <style name="MicroText">
+        <item name="android:textSize">@dimen/text_micro</item>
+    </style>
+
 </resources>

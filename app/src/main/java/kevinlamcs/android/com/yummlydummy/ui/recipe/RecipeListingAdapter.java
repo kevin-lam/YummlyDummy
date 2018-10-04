@@ -36,4 +36,9 @@ public class RecipeListingAdapter extends RecyclerView.Adapter<RecipeListingView
     public int getItemCount() {
         return recipes!= null ? recipes.size() : 0;
     }
+
+    public void setRecipes(List<Recipe> recipes) {
+        this.recipes = recipes;
+        notifyDataSetChanged();
+    }
 }

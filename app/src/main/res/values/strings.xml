@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">YummlyDummy</string>
     <string name="search_hint">Search</string>
+    <string name="recipe_image">Recipe image</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="calories">Calories</string>
+    <string name="minutes">Minutes</string>
+    <string name="empty_text">-</string>
 </resources>

@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kevinlamcs.android.com.yummlydummy.R;
@@ -37,9 +40,21 @@ public class RecipeListingViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(Recipe recipe) {
+        loadPhoto(recipe);
         name.setText(recipe.getRecipeName());
         source.setText(recipe.getSourceDisplayName());
         cookingTime.setText(recipe.getTotalTimeInSeconds().toString());
-        ingredientCount.setText(recipe.getIngredients().size());
+        ingredientCount.setText(String.valueOf(recipe.getIngredients().size()));
+    }
+
+    private void loadPhoto(Recipe recipe) {
+        if (recipe.getSmallImageUrls().size() != 0) {
+            RequestOptions requestOptions = new RequestOptions().placeholder(R.drawable.ic_launcher_foreground);
+
+            Glide.with(itemView)
+                    .load(recipe.getSmallImageUrls().get(0))
+                    .apply(requestOptions)
+                    .into(photo);
+        }
     }
 }
