@@ -11,7 +11,6 @@ import android.widget.EditText;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -25,7 +24,6 @@ import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -35,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
     private MainViewModel viewModel;
     private RxPermissions permissions;
-    private RecipeListingAdapter recipeAdapter;
-    private RecyclerView.LayoutManager recipeLayoutManager;
 
     @BindView(R.id.recipe_listing)
     RecyclerView recipeListing;
@@ -58,12 +54,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupObservables() {
-        viewModel.getRecipes().observe(this, recipes -> recipeAdapter.setRecipes(recipes));
+        viewModel.getRecipes().observe(this, recipes -> ((RecipeListingAdapter) recipeListing.getAdapter()).setRecipes(recipes));
     }
 
     private void setupRecyclerView() {
-        recipeAdapter = new RecipeListingAdapter(new ArrayList<>());
-        recipeLayoutManager = new LinearLayoutManager(this);
+        RecipeListingAdapter recipeAdapter = new RecipeListingAdapter(new ArrayList<>());
+        LinearLayoutManager recipeLayoutManager = new LinearLayoutManager(this);
         recipeListing.setLayoutManager(recipeLayoutManager);
         recipeListing.setAdapter(recipeAdapter);
     }
@@ -72,9 +68,8 @@ public class MainActivity extends AppCompatActivity {
         RxTextView.editorActions(searchBar)
                 .filter(actionId -> actionId == EditorInfo.IME_ACTION_DONE)
                 .compose(permissions.ensure(Manifest.permission.INTERNET))
-                .subscribe(granted -> {
-                    viewModel.searchRecipes(searchBar.getText().toString());
-                });
+                .subscribe(granted -> viewModel.searchRecipes(searchBar.getText().toString()));
+
     }
 
     private void setupAPIService() {
@@ -104,18 +99,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Interceptor parameterInterceptor() {
-        return new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
-                Request originalRequest = chain.request();
-                HttpUrl originalUrl = originalRequest.url();
-                HttpUrl newUrl = originalUrl.newBuilder()
-                        .addQueryParameter("_app_id", BuildConfig.API_ID)
-                        .addQueryParameter("_app_key", BuildConfig.API_KEY)
-                        .build();
-                Request newRequest = originalRequest.newBuilder().url(newUrl).build();
-                return chain.proceed(newRequest);
-            }
+        return chain -> {
+            Request originalRequest = chain.request();
+            HttpUrl originalUrl = originalRequest.url();
+            HttpUrl newUrl = originalUrl.newBuilder()
+                    .addQueryParameter("_app_id", BuildConfig.API_ID)
+                    .addQueryParameter("_app_key", BuildConfig.API_KEY)
+                    .build();
+            Request newRequest = originalRequest.newBuilder().url(newUrl).build();
+            return chain.proceed(newRequest);
         };
     }
 
