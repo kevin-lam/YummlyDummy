@@ -10,13 +10,14 @@ import java.util.List;
 import java.util.zip.Inflater;
 
 import kevinlamcs.android.com.yummlydummy.R;
+import kevinlamcs.android.com.yummlydummy.data.model.FullRecipe;
 import kevinlamcs.android.com.yummlydummy.data.model.Recipe;
 
 public class RecipeListingAdapter extends RecyclerView.Adapter<RecipeListingViewHolder> {
 
-    private List<Recipe> recipes;
+    private List<FullRecipe> recipes;
 
-    public RecipeListingAdapter(List<Recipe> recipes) {
+    public RecipeListingAdapter(List<FullRecipe> recipes) {
         this.recipes = recipes;
     }
 
@@ -37,7 +38,7 @@ public class RecipeListingAdapter extends RecyclerView.Adapter<RecipeListingView
         return recipes!= null ? recipes.size() : 0;
     }
 
-    public void setRecipes(List<Recipe> recipes) {
+    public void setRecipes(List<FullRecipe> recipes) {
         this.recipes = recipes;
         notifyDataSetChanged();
     }

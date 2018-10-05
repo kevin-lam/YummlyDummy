@@ -42,21 +42,20 @@
 
     <TextView
         android:id="@+id/recipe_ingredient_count"
+        style="@style/MediumText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@id/recipe_ingredient_count_label"
-        app:layout_constraintTop_toBottomOf="@id/recipe_source"
-        app:layout_constraintBottom_toBottomOf="parent"
-        style="@style/MediumText"
         android:text="@string/empty_text"
-        tools:text="10"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/image_text_guideline"
+        app:layout_constraintTop_toBottomOf="@id/recipe_source"
+        tools:text="10" />
 
     <TextView
         android:id="@+id/recipe_ingredient_count_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/image_text_guideline"
-        app:layout_constraintEnd_toStartOf="@id/recipe_calorie_count_label"
+        app:layout_constraintStart_toEndOf="@id/recipe_ingredient_count"
         app:layout_constraintTop_toBottomOf="@id/recipe_source"
         app:layout_constraintBottom_toBottomOf="parent"
         style="@style/MicroText"
@@ -71,14 +70,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         style="@style/MediumText"
         android:text="@string/empty_text"
-        tools:text="320"/>
+        tools:text="320.87"/>
 
     <TextView
         android:id="@+id/recipe_calorie_count_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/recipe_ingredient_count_label"
-        app:layout_constraintEnd_toStartOf="@id/recipe_cooking_time_label"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/recipe_source"
         app:layout_constraintBottom_toBottomOf="parent"
         style="@style/MicroText"
@@ -99,7 +98,6 @@
         android:id="@+id/recipe_cooking_time_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/recipe_calorie_count_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/recipe_source"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -112,6 +110,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.35" />
+
+    <LinearLayout
+        android:id="@+id/cuisine_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/recipe_source"
+        app:layout_constraintStart_toEndOf="@id/image_text_guideline"
+        app:layout_constraintBottom_toTopOf="@id/recipe_ingredient_count_label"
+        android:orientation="horizontal"></LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>
