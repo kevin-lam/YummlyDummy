@@ -11,7 +11,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 import io.reactivex.plugins.RxJavaPlugins;
 import kevinlamcs.android.com.yummlydummy.ui.main.MainActivity;

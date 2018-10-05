@@ -2,8 +2,6 @@ package kevinlamcs.android.com.yummlydummy.ui.recipe;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.constraint.ConstraintSet;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,7 +15,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import kevinlamcs.android.com.yummlydummy.R;
 import kevinlamcs.android.com.yummlydummy.data.model.FullRecipe;
-import kevinlamcs.android.com.yummlydummy.data.model.Recipe;
 
 public class RecipeListingViewHolder extends RecyclerView.ViewHolder {
 

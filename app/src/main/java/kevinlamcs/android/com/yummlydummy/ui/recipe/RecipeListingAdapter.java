@@ -7,11 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 import kevinlamcs.android.com.yummlydummy.R;
 import kevinlamcs.android.com.yummlydummy.data.model.FullRecipe;
-import kevinlamcs.android.com.yummlydummy.data.model.Recipe;
 
 public class RecipeListingAdapter extends RecyclerView.Adapter<RecipeListingViewHolder> {
 
@@ -35,7 +33,7 @@ public class RecipeListingAdapter extends RecyclerView.Adapter<RecipeListingView
 
     @Override
     public int getItemCount() {
-        return recipes!= null ? recipes.size() : 0;
+        return recipes != null ? recipes.size() : 0;
     }
 
     public void setRecipes(List<FullRecipe> recipes) {

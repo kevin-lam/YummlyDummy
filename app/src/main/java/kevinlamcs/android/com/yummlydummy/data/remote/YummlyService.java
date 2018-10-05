@@ -1,6 +1,5 @@
 package kevinlamcs.android.com.yummlydummy.data.remote;
 
-import io.reactivex.Maybe;
 import io.reactivex.Observable;
 import kevinlamcs.android.com.yummlydummy.data.model.RecipeDetail;
 import kevinlamcs.android.com.yummlydummy.data.model.RecipeResponse;
